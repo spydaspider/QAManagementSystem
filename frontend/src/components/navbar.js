@@ -2,6 +2,7 @@ import React,{ Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './navbar.module.css';
 import { useNavigate } from 'react-router-dom';
+import homeIcon from '../assets/icons/home.png';
 const Navbar = () =>{
     
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ const Navbar = () =>{
                 </NavLink>
 
                 <nav className={styles.mainNav}>
-                  <NavLink className={({isActive}) =>(isActive ? styles.activeLink: styles.white)} to ="/">Home</NavLink>
+                  <NavLink className={({isActive}) =>(isActive ? styles.activeLink: styles.white)} to ="/"><img src={homeIcon}/></NavLink>
                   <NavLink className={({isActive})=>(isActive ? styles.activeLink : styles.white)} to ="/about">About</NavLink>
                   <NavLink className={({isActive})=>(isActive ? styles.activeLink: styles.white)} to = "/contact">Contact Us</NavLink>
 

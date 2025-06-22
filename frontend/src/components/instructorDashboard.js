@@ -1,7 +1,29 @@
 import styles from './instructorDashboard.module.css';
 import { useState } from 'react';
+import dashboardIcon from '../assets/icons/Dashboard.png';
+import reportsIcon from '../assets/icons/reports.png';
+import groupsIcon from '../assets/icons/groups.png';
+import leaderBoardIcon from '../assets/icons/leaderboard.png';
+import submissionsIcon from '../assets/icons/submissions.png';
+import alertsIcon from '../assets/icons/Alerts.png';
+import milestonesIcon from '../assets/icons/milestones.png';
+import resourcesIcon from '../assets/icons/resources.png';
+import testCaseIcon from '../assets/icons/testcase.png';
+
 const InstructorDashboard = () =>{
    
+  //add images to the badges
+const badges = [
+  { name: 'Dashboard',             icon: dashboardIcon },
+  { name: 'Groups',                icon: groupsIcon    },
+  { name: 'QAReports',             icon: reportsIcon        },
+  { name: 'LeaderBoard',           icon: leaderBoardIcon },
+  { name: 'Submissions',           icon: submissionsIcon},
+  { name: 'Alerts & Notifications', icon: alertsIcon    },
+  { name: 'Milestones',            icon: milestonesIcon },
+  { name: 'Resources',             icon: resourcesIcon  },
+  { name: 'TestCase',              icon: testCaseIcon   },
+];
     const message = "Instructor Dashboard";
     const [selectedBadge, setSelectedBadge] = useState("Dashboard");
    /*  const [showDashBoard, setShowDashBoard] = useState(true);
@@ -48,13 +70,14 @@ const InstructorDashboard = () =>{
             <div className={styles.middle}>
             <div className={styles.left}>
                 <div className={styles.top}>
-                {["Dashboard", "Groups", "QAReports","LeaderBoard","Submissions","Alerts & Notifications","Milestones", "Resources", "TestCase"].map((badge) => (
-              <button
-                key={badge}
-                className={`${styles.badge} ${selectedBadge === badge ? styles.selected : ""}`}
-                onClick={() => handleBadgeClick(badge)}
-              >
-                {badge}
+                {badges.map(({name,icon}) => (
+               <button
+              key={name}
+              className={`${styles.badge} ${selectedBadge === name ? styles.selected : ''}`}
+              onClick={() => handleBadgeClick(name)}
+            >
+               <img src={icon} alt="" className={styles.badgeIcon} />
+              <span>{name}</span>
               </button>
             ))}
                 </div>
