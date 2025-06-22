@@ -1,201 +1,116 @@
-.middle{
-    display: grid;
-    grid-template-columns: repeat(12,1fr);
-    gap: 2%;
-    padding: 20px;
-    max-width: 100%;
-    margin-right: auto;
+.container {
+  /* full‑screen wrapper if you need one; otherwise you can drop this */
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
   
 }
-.left{
-  grid-column: 1 / 4;
+
+/* Sidebar */
+.left {
+  position: fixed;
+  top: 44px;                        /* below the nav bar */
+  left: 0;
+  width: 200px;
+ height: 800px;                    /* remove this */
+ height: calc(100vh - 44px);       /* fill the rest of the viewport */
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* separates top and bottom content */
+  justify-content: space-between;
   align-items: center;
   border: 1px solid #EFEFF4;
   border-radius: 10px;
-  height: 100vh; /* or 100% if parent has defined height */
-  overflow: hidden;
   padding: 10px 0;
-
-
-    
-}
-.top{
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 300px;
-    width:100%;
-    padding: 10px;
-    gap: 1em;
-}
-.top .badge{
-    padding: 17px 0;
-    border: none;
-    background: white;
-    border-radius: 10px;
-}
-.badge:hover{
-    background: #EFEFF4;
-}
-
+  background: white;
+  z-index: 10;
+  overflow-y: auto;                 /* vertical scroll if content overflows */
+  overflow-x: hidden;
   
-  .selected {
-    color: white; /* Change text color to white for contrast */
-    border: none; /* Optional: remove border for a cleaner look */
-    background: linear-gradient(to Right, #1E3C72, #2A5298)!important;
-  }
-  .down{
-    width:100%;
-    display: flex;
-    justify-content: center;
-    padding:10px;
-  }
-  .down button{
-    
-    border: none;
-    background: none;
-    width:100%;
-    padding: 1em 0;
-    border-radius: 10px;
-
-  }
-  .down button:hover{
-    background: #EFEFF4;
-  }
-
-.right{
-     grid-column: 4/13;
-    width:100%;
-    
-
 }
-.topReadings{
-  
+/* Badge list (inside .left) */
+.top {
   display: flex;
-  gap:2%;
+  flex-direction: column;
+  justify-content: space-around;
   width: 100%;
-  
-
-
-}
-.rrTop{
-  
-   display: flex;
-   gap: 1%;
-  
-   width: 200px;
-   
-  
-  
+  padding: 10px;
+  gap: 1em;
 
 }
- .imgContainer{
-  width: 45px;
+
+.top .badge {
+  padding: 17px 0;
+  border: none;
+  background: white;
+  border-radius: 10px;
+  cursor: pointer;
 }
-.rrTop img{
+
+.top .badge:hover {
+  background: #EFEFF4;
+}
+
+.selected {
+  color: white;
+  background: linear-gradient(to right, #1E3C72, #2A5298) !important;
+  border: none;
+}
+
+/* Logout button at bottom of sidebar */
+.down {
   width: 100%;
-}
-.rr{
-  font-size: 12px;
-  font-weight:400;
-}
-.noOfRequest{
-  margin-top: -0.7em;
-
-}
-.rrTotal{
-  font-size: 13px;
-  font-weight: 400;
-  color: white;
-  
-}
-.totalNoOfRequest{
-  color: white;
-  margin-top: -0.7em;
-}
-.totalContainer{
-  background: #E7A722;
-  border-radius: 6px;
   padding: 10px;
   
 }
-.seeDetails{
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 12px;
-  
-  
-}
-.arrowContainer{
-  width: 16px;
-  
-}
-.arrowContainer img{
+.down button {
   width: 100%;
-  margin-top:3px;
+  padding: 1em 0;
+  border: none;
+  background: none;
+  border-radius: 10px;
   cursor: pointer;
 }
-.see{
-  color:#E7A722;
-  
-}
-.line{
-  width: 8px;
-  background: #333;
-}
-.chartContainer {
 
-  padding: 20px;
-  max-width: 800px;
-  margin-top: 50px;
-  
-  
-  border-radius: 8px;
-}
-.title {
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 20px;
-
-  text-align: left;
-}
-.chart {
-  margin: auto;
-}
-.restaurantsAndReviews{
-  
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  width: 90%;
-  
-  
-  
-
+.down button:hover {
+  background: #EFEFF4;
 }
 
-.location{
-  font-size: 13px;
-  margin-top: -1.5em;
+/* Main content area */
+.middle {
+  position: absolute;
+  top: 0;
+  left: 200px;      /* exactly the width of .left */
+  right: 0;
+  bottom: 0;
+  background: red;
+  padding: 1em;
+  overflow-y: auto; /* vertical scrolling if needed */
 }
-.latestContainer{
-  margin-top: -1.2em;
+
+/* Example nested content inside .middle */
+.right {
+  /* if you need further grid inside middle */
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 1em;
+  width: 100%;
 }
-table{
+
+/* Optional responsive tweak */
+@media (max-width: 768px) {
+  .left {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
-table thead tr th{
-  font-size: 14px;
-  font-weight: 300;
-}
-table tbody tr td{
-  font-size: 14px;
-  font-weight: 200;
+  .middle {
+    position: relative;
+    left: 0;
+    top: auto;
+    height: auto;
+  }
 }
