@@ -22,7 +22,7 @@ const Navbar = () =>{
 
                 <nav className={styles.mainNav}>
                   <NavLink className={({isActive}) =>(isActive ? styles.activeLink: styles.white)} to ="/"><img src={homeIcon}/></NavLink>
-                  <NavLink className={({isActive})=>(isActive ? styles.activeLink : styles.white)} to ="/about">About</NavLink>
+                  <NavLink className={({isActive})=>(isActive ? styles.activeLink : styles.white)} to ="/studentDashBoard">StudentDash</NavLink>
                   <NavLink className={({isActive})=>(isActive ? styles.activeLink: styles.white)} to = "/contact">Contact Us</NavLink>
 
 
